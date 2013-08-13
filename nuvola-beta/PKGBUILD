@@ -10,7 +10,7 @@ _tarball_extract_name="nuvolaplayer-2.1~r736.beta1"
 
 pkgname=nuvolaplayer-beta
 pkgver=2.1_beta1
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrated Google Music, Grooveshark, 8tracks and Hype Machine player (beta version)."
 arch=(i686 x86_64)
 url=http://nuvolaplayer.fenryxo.cz
