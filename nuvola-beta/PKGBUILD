@@ -1,26 +1,33 @@
-# Contributor: Ray Rashif <schivmeister@gmail.com>
-# Contributor: Alexandr Grigorcea <cahr.gr@gmail.com>
+# Maintainer: Alex Jordan <alexander3223098@gmail.com>
 
-pkgname=nuvolaplayer
-pkgver=2.0.4
+# Based off the nuvolaplayer PKGBUILD in the AUR, which uses work from the following people. This one is only slightly modified.
+
+# Original Contributor: Ray Rashif <schivmeister@gmail.com>
+# Original Contributor: Alexandr Grigorcea <cahr.gr@gmail.com>
+ 
+# not a makepkg variable
+tarball_extract_name="nuvolaplayer-2.1~r736.beta1"
+
+pkgname=nuvolaplayer-beta
+pkgver=2.1_beta1
 pkgrel=1
-pkgdesc="Integrated Google Music, Grooveshark, 8tracks and Hype Machine player."
+pkgdesc="Integrated Google Music, Grooveshark, 8tracks and Hype Machine player (beta version)."
 arch=(i686 x86_64)
-url="http://nuvolaplayer.fenryxo.cz"
-license=('GPLv3')
+url=http://nuvolaplayer.fenryxo.cz
+license=('GPL3')
 depends=('json-glib' 'intltool' 'gtk3' 'webkitgtk3' 'python2' 'libnotify' 'libx11' 'libunique' 'libgee06' 'libsoup' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly')
 makedepends=('vala' 'scour')
-provides=('nuvola')
-conflicts=('google-musc-frame-bzr')
+provides=('nuvola' 'nuvolaplayer')
+conflicts=('google-musc-frame-bzr' 'nuvolaplayer')
 optdepends=('gnome-shell-extension-mediaplayer-git: Gnome Shell integration' 'tsocks: Socks proxy support')
-replaces=('google-music-frame-bzr' 'nuvola-bzr' 'nuvola-bzr-stable' 'nuvolaplayer-beta')
+replaces=('google-music-frame-bzr' 'nuvola-bzr' 'nuvola-bzr-stable')
 options=()
-source=(https://launchpad.net/nuvola-player/2.0.x/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz)
-md5sums=(38e186d985d1706e5262c226d8cce45a)
+source=(https://launchpad.net/nuvola-player/2.1.x/${pkgver//_/-}/+download/${tarball_extract_name}.tar.gz)
+md5sums=(3e4f623977699a4a27353ecc2131d7e7)
 install=nuvola.install
-
+ 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${tarball_extract_name}"
   LDFLAGS="$LDFLAGS -ldl"
 
   python2 ./waf configure --prefix=/usr --no-unity-quick-list
@@ -29,7 +36,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${tarball_extract_name}"
 
   python2 ./waf install --destdir="${pkgdir}"
 }
