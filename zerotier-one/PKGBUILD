@@ -1,0 +1,42 @@
+# Maintainer: Alex Jordan <alexander3223098@gmail.com>
+pkgname=zerotier-one
+pkgver=0.7.2
+pkgrel=1
+epoch=
+pkgdesc="Creates virtual Ethernet networks of almost unlimited size."
+arch=('i686', 'x86_64')
+url="https://www.zerotier.com/index.html"
+license=('GPL3')
+groups=()
+depends=()
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+# TODO
+# changelog=
+source=(https://github.com/zerotier/ZeroTierOne/archive/$pkgver.tar.gz
+       )
+md5sums=('a1721f4bf4680464f7ffbf05b217cda9')
+noextract=()
+
+build() {
+	cd "$srcdir/ZeroTierOne-$pkgver"
+	make
+}
+
+check() {
+	cd "$srcdir/ZeroTierOne-$pkgver"
+	make selftest
+}
+
+package() {
+	cd "$srcdir/ZeroTierOne-$pkgver"
+	mkdir -p $pkgdir/usr/bin
+	install zerotier-one $pkgdir/usr/bin/
+}
