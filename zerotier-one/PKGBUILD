@@ -25,6 +25,8 @@ source=(https://github.com/zerotier/ZeroTierOne/archive/$pkgver.tar.gz
 md5sums=('a1721f4bf4680464f7ffbf05b217cda9')
 noextract=()
 
+# TODO: patch the systemd unit file to have the correct binary path
+
 build() {
 	cd "$srcdir/ZeroTierOne-$pkgver"
 	make
@@ -37,6 +39,7 @@ check() {
 
 package() {
 	cd "$srcdir/ZeroTierOne-$pkgver"
-	mkdir -p $pkgdir/usr/bin
+	mkdir -p $pkgdir/usr/bin $pkgdir/usr/lib/systemd/system
 	install zerotier-one $pkgdir/usr/bin/
+	install ext/installfiles/linux/systemd/zerotier-one.service $pkgdir/usr/lib/systemd/system
 }
