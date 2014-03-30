@@ -20,12 +20,16 @@ options=()
 install=
 # TODO
 # changelog=
-source=(https://github.com/zerotier/ZeroTierOne/archive/$pkgver.tar.gz
+source=("https://github.com/zerotier/ZeroTierOne/archive/$pkgver.tar.gz"
+        '000-fix-systemd-unit-path.patch'
        )
-md5sums=('a1721f4bf4680464f7ffbf05b217cda9')
+md5sums=('a1721f4bf4680464f7ffbf05b217cda9'
+         'cf4a220c2ca460808b8676319d21b7c2')
 noextract=()
 
-# TODO: patch the systemd unit file to have the correct binary path
+prepare() {
+	patch -Nu $srcdir/ZeroTierOne-$pkgver/ext/installfiles/linux/systemd/zerotier-one.service $srcdir/000-fix-systemd-unit-path.patch
+}
 
 build() {
 	cd "$srcdir/ZeroTierOne-$pkgver"
