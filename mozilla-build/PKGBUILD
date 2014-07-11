@@ -1,4 +1,5 @@
 # Maintainer: Alex Jordan <alexander3223098@gmail.com>
+# TODO: add a note about omitting the VCS, since Mozilla has git services now
 # TODO: add a note about the default Python. See:
 # https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Build_Instructions/Linux_Prerequisites#Python
 pkgname=mozilla-build
@@ -10,7 +11,7 @@ arch=('i686' 'x86_64')
 url=""
 license=('GPL')
 groups=()
-depends=('zip' 'unzip' 'freetype2' 'fontconfig' 'pkg-config' 'gtk2' 'dbus-glib' 'iw' 'libidl2' 'python2' 'mercurial' 'alsa-lib' 'curl' 'libnotify' 'libxt' 'mesa' 'autoconf2.13' 'yasm' 'wireless_tools' 'gstreamer0.10' 'gstreamer0.10-base-plugins' 'libpulse')
+depends=('zip' 'unzip' 'freetype2' 'fontconfig' 'pkg-config' 'gtk2' 'dbus-glib' 'iw' 'libidl2' 'python2' 'alsa-lib' 'curl' 'libnotify' 'libxt' 'mesa' 'autoconf2.13' 'yasm' 'wireless_tools' 'gstreamer0.10' 'gstreamer0.10-base-plugins' 'libpulse')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -26,19 +27,19 @@ sha512sums=()
 noextract=()
 
 prepare() {
-
+	true;
 }
 
 build() {
-
+	true;
 }
 
 check() {
-
+	true;
 }
 
 package() {
-
+	true;
 }
 
 # vim:set ts=2 sw=2 et:
